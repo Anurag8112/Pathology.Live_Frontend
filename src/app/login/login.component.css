@@ -1,0 +1,41 @@
+.card{
+    margin-top: 300px;
+    min-width: 200px;
+    min-height: auto;
+    width: auto;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(41, 82, 112, 0.581);
+    background: linear-gradient(90deg,rgba(41, 82, 112, 0.568) 0%,rgba(83, 65, 118, 0.64)100%);
+}
+
+.card,label,h1, h6{
+    color: white;
+}
+
+
+.msg{
+    color: white;
+    font-size: small;
+    font-weight: 100;
+}
+
+
+.btn{
+    background-color: DodgerBlue;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.main{
+    background-color: rgb(17, 15, 31);
+    height: 100%;
+    
+}
+
+.form-control{
+    width: 300px;
+}

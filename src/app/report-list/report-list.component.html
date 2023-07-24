@@ -1,0 +1,48 @@
+<div class="ReportCard">
+    <div class="card">
+        <div class="cardcontent">
+            <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <td scope="col"><b>Sr. No.</b></td>
+                    <td scope="col"><b>First Name</b></td>
+                    <td scope="col"><b>Last Name</b></td>
+                    <td scope="col"><b>Handle</b></td>
+                    <td scope="col"><b>Action</b></td>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let item of list">
+                  <tr>
+                    <td>{{item.srno}}</td>
+                    <td>{{item.first}}</td>
+                    <td>{{item.last}}</td>
+                    <td>{{item.handle}}</td>
+                    <td><a href="#"><i class="fa fa-print me-1"></i>Print</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table> 
+              <div class="pagebar">
+                <nav aria-label="Page navigation example">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only"></span>
+                      </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                      <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only"></span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+              </div>
+        </div>
+    </div>
+</div>

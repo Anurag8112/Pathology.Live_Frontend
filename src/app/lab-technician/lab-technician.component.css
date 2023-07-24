@@ -1,0 +1,70 @@
+.dashboard-header{
+    background-color: rgb(255, 255, 255);
+    height: 107px;
+    border-radius: 0px;
+    padding: 15px;
+    padding-bottom: 0px;
+    box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.Component-header{
+    font-size: 25px;
+    font-weight: 500;
+    display: flex;
+    position: absolute;
+}
+
+.btnComponent{
+    display: flex;
+}
+
+
+.Component{
+    flex: auto;
+    margin-top: 5px;
+    margin-bottom: 0px;
+}
+
+.btn{
+    position: relative;
+    float: right;
+    background-color: DodgerBlue;
+    margin-left: 10px;
+    color: white;
+    height: 40px;
+    width: auto;
+    font-weight: 200;
+}
+
+.btn:hover{
+    color: black;
+    background-color: white;
+    outline: 2px solid DodgerBlue;
+}
+
+.topnav {
+    overflow: hidden;
+    margin-top: 15px;
+  }
+  
+.topnav a {
+    float: left;
+    display: block;
+    color: #151515;
+    text-align: left;
+    margin-right: 30px;
+    padding: 0 4px 0 4px;;
+    text-decoration: none;
+    font-size: 14px;
+    border-bottom: 3px solid transparent;
+  }
+  
+.topnav a:hover {
+    border-bottom: 3px solid DodgerBlue;
+    padding-bottom: 15px;
+  }
+  
+  .topnav a.active {
+    border-bottom: 3px solid DodgerBlue;
+    padding-bottom: 15px;
+  }

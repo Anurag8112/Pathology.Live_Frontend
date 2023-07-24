@@ -1,0 +1,258 @@
+
+<div class="ReportCard">
+  <div class="card">
+      <div class="cardcontent">
+          <form>
+              <div class="row-group">
+                <div class="form-group">
+                  <label class="label-inline" for="patientName">Patient</label>
+                  <div class="input-inline">
+                    <select class="form-control" id="namePrefix">
+                      <option>Mr.</option>
+                      <option>Mrs.</option>
+                    </select>
+                    <input type="text" class="form-control" id="patientName" placeholder="Patient Name">
+                  </div>
+                </div>
+        
+                <div class="form-group">
+                  <label class="label-inline" for="refNo">Ref. No</label>
+                  <div class="input-inline">
+                    <input type="text" class="form-control" id="refNo" placeholder="Reference Number">
+                  </div>
+                </div>
+              </div>
+        
+              <div class="row-group">
+                <div class="form-group">
+                  <label class="label-inline" for="mobileNo">Mobile No.</label>
+                  <div class="input-inline">
+                    <input type="text" class="form-control" id="mobileNo" placeholder="Mobile Number">
+                    <div class="mobilebuttons">
+                        <a href="#home">Edit</a>&nbsp;&nbsp;&nbsp;
+                        <a href="#news">Refresh</a>
+                    </div>
+                  </div>
+                </div>
+        
+                <div class="form-group">
+                  <label class="label-inline" for="entryDate">Entry Date</label>
+                  <div class="input-inline">
+                    <input type="date" class="form-control" id="entryDate">
+                  </div>
+                </div>
+              </div>
+        
+              <div class="row-group">
+                <div class="form-group">
+                  <label class="label-inline" for="address">Address</label>
+                  <div class="input-inline">
+                      <input type="text" class="form-control" id="address" placeholder="Patient Address">
+                  </div>
+                </div>
+        
+                <div class="form-group">
+                  <label class="label-inline" for="deliveryDate">Delivery Date</label>
+                  <div class="input-inline">
+                    <input type="date" class="form-control" id="deliveryDate">
+                  </div>
+                </div>
+              </div>
+        
+              <div class="row-group">
+                <div class="form-group">
+                  <div class="label">
+                      <label class="label-inline" for="gender">Gender</label>
+                      <label class="label-inline" for="age">Age</label>
+                  </div>
+                  <div class="input-inline">
+                    <select class="form-control" id="gender">
+                      <option>Male</option>
+                      <option>Female</option>
+                    </select>
+                    <input type="text" class="form-control" id="age" placeholder="Enter age">
+                    <select class="form-control" id="ageUnit">
+                      <option>Years</option>
+                      <option>Months</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  
+                </div>
+              </div>
+        
+              <div class="row-group">
+                <div class="form-group">
+                  <label class="label-inline" for="refBy">Ref. By</label>
+                  <div class="input-inline">
+                    <input type="text" class="form-control" id="refBy" placeholder="Referring Person's Name">
+                  </div>
+                </div>
+                <div class="form-group">
+
+                </div>
+              </div>
+          </form>   
+      </div>
+      <div class="horizontalline"></div>
+      <div class="cardcontent">
+          
+              <div class="row-group">
+                  <div class="form-group">
+                    <label class="label-inline" for="Test Search">Test Name</label>
+                    <div class="input-inline1">
+                        <input type="text" [(ngModel)]="searchTerm" (input)="search()" class="form-control">
+                        <ul *ngIf="showSuggestions && getFilteredSuggestions().length > 0" class="suggestion-list">
+                          <li *ngFor="let suggestion of getFilteredSuggestions()" (click)="selectSuggestion(suggestion)">
+                            {{ suggestion.testname }}
+                          </li>
+                        </ul>
+                    </div>
+                  </div>
+              </div>
+
+              <div class="tablecontainer">
+                <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <td scope="col"><b>Test Name</b></td>
+                      <td scope="col"><b>Price</b></td>
+                      <td scope="col"><b>Print</b></td>
+                      <td scope="col"><b>Delete</b></td>
+                      <td scope="col"><b>Report</b></td>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let item of selectedItems">
+                      <td>{{item.testname}}</td>
+                      <td>{{item.price}}</td>
+                      <td><input type="checkbox" [checked]="selectAllChecked"></td>
+                      <td><a (click)="deleteItem(item)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                      <td><button class="print-inside-table" (click)="addReport(item)"><i class="fa-solid fa-pen-nib"></i> Report</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <div class="table-control">
+                <a href="javascript:void(0);" (click)="checkAll()">Check All</a>&nbsp;&nbsp;&nbsp;
+                <a href="javascript:void(0);" (click)="uncheckAll()">Uncheck All</a>
+              </div>
+              
+              
+              <div class="billingcard">
+                
+                <div class="leftcard">
+                  <div class="lr1">
+                      <label class="label-inline" for="Mode">Mode</label>
+                      <select class="form-control" id="namePrefix">
+                          <option>Cash</option>
+                          <option>UPI</option>
+                      </select>
+                      <label class="label-inline" for="Status">Status</label>
+                      <select class="form-control" id="namePrefix">
+                          <option>Pending</option>
+                          <option>Completed</option>
+                      </select>
+                  </div>
+                  <div class="lr2">
+                    <label class="label-inline" for="Note">Note</label>
+                    <input type="text" class="form-control" id="Note" placeholder="Write Some Note">
+                  </div>
+                </div>
+
+                <div class="rightcard">
+                  <div class="rr">
+                    <label class="label-inline" for="rlabel">Subtotal</label>
+                    <input type="text" class="form-control" id="subtotal" placeholder="00.00" value="{{ calculateSubtotal() }}" readonly>
+                  </div>
+                  <div class="rr">
+                    <label class="label-inline" for="rlabel">(-) Discount %</label>
+                    <input type="text" class="form-control" id="discount" placeholder="00.00" (input)="calculateTotalAmount()" [(ngModel)]="discountValue">
+                  </div>
+                  <div class="rr">
+                    <label class="label-inline" for="rlabel">Total Amount</label>
+                    <input type="text" class="form-control" id="totalAmount" placeholder="00.00" [value]="calculateTotalAmount()" readonly>
+                  </div>
+                  <div class="rr">
+                    <label class="label-inline" for="rlabel">Paid Amount</label>
+                    <input type="text" class="form-control" id="paidAmount" placeholder="00.00" (input)="calculateBalanceAmount()" [(ngModel)]="paidAmountValue">
+                  </div>
+                  <div class="rr">
+                    <label class="label-inline" for="rlabel">Balance</label>
+                    <input type="text" class="form-control" id="balance" placeholder="00.00" [value]="calculateBalanceAmount()" readonly>
+                  </div>
+                </div>
+              </div>
+
+              <div class="billingbutton">
+                <button class="reportbuttons">Save Report</button>
+                <button class="reportbuttons">Update Report</button>
+                <button class="reportbuttons">Print Bill</button>
+                <button class="reportbuttons">Add New Hospital</button>
+                <button class="reportbuttons">Add New Doctor</button>
+              </div>
+      </div>
+      
+  </div>
+
+  <div class="card">
+      <div class="cardcontent">
+        <div class="tablecontainer2">
+          <table class="table2">
+            <thead class="thead-dark">
+              <tr>
+                <td scope="col"><b>Bold</b></td>
+                <td scope="col"><b>Test/Profiles</b></td>
+                <td scope="col"><b>Value(s)</b></td>
+                <td scope="col"><b>Reference Range</b></td>
+                <td scope="col"><b>Units</b></td>
+                <td scope="col"><b>Action</b></td>
+              </tr>
+            </thead>
+            <tbody *ngFor="let reportcomponent of reportItems">
+              <tr *ngFor="let report of reportcomponent">
+                <td><input type="checkbox" [checked]="selectAllChecked"></td>
+                <td>{{report.component}}</td>
+                <td><input type="text" class="form-control2"></td>
+                <td>{{report.referenceRange}}</td>
+                <td>{{report.units}}</td>
+                <td><a (click)="deleteItem2(report)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="horizontalline2"></div>
+        <div class="container2">
+          <div class="part1">
+            <label class="label-inline" for="Heading">Heading</label>
+            <input type="text" class="form-control" id="Heading" placeholder="Heading">
+          </div>
+          <div class="part2">
+            <label class="label-inline" for="ReportingDate">Reporting Date</label>
+            <input type="date" class="form-control" id="ReportingDate">
+          </div>
+        </div>
+
+        <div class="container2">
+          <div class="part21">
+            <label class="label-inline" for="Method">Method</label>
+            <input type="text" class="form-control" id="Method" placeholder="Method">
+          </div>
+        </div>
+        <div class="container2">
+          <div class="part31">
+            <label class="label-inline" for="Comments">Comments</label>
+            <textarea class="form-control" id="Comments" placeholder="Your text here..."></textarea>
+          </div>
+        </div>
+
+        <div class="billingbutton2">
+          <button class="reportbuttons">Save & Next Report</button>
+          <button class="reportbuttons">Print Reports</button>
+          <button class="reportbuttons" (click)="clearall()">Clear All</button>
+        </div>
+      </div>
+  </div>
+</div>

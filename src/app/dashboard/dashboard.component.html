@@ -1,0 +1,90 @@
+<div class="dashboard-header">
+    <div class="btnComponent">
+        <div class="Component">
+            <h1 class="Component-header">Dashboard</h1>
+        </div>
+        <div >
+            <button class="btn"><i class="fa-regular fa-plus me-1"></i>Create Reports</button>
+        </div>
+    </div>
+        <div class="Component">
+            <div class="topnav">
+                    <!-- Call the onClickToday method when "Today" is clicked -->
+                    <a (click)="onClickToday()" [ngClass]="{ 'active': activeTab === 'today' }">Today</a>
+                    <!-- Call the onClickThisWeek method when "This Week" is clicked -->
+                    <a (click)="onClickThisWeek()" [ngClass]="{ 'active': activeTab === 'thisWeek' }">This Week</a>
+                    <!-- Call the onClickThisMonth method when "This Month" is clicked -->
+                    <a (click)="onClickThisMonth()" [ngClass]="{ 'active': activeTab === 'thisMonth' }">This Month</a>
+              </div>
+        </div>
+</div>
+<div class="AnalyticsCards">
+    <div class="card" *ngFor="let data of dashboardData">
+      <div class="carddataheading">
+        {{ data.cardName }}
+      </div>
+      <div class="carddatacount">
+        {{ data.cardCount }}+
+      </div>
+      <div class="cardcountchange" [ngClass]="{ 'negative': isNegativePercentage(data.changePercentage) }">
+        <i class="fas" [ngClass]="{ 'fa-arrow-up': !isNegativePercentage(data.changePercentage), 'fa-arrow-down': isNegativePercentage(data.changePercentage) }"></i> {{ data.changePercentage }}%
+      </div> 
+    </div>
+  </div>
+
+<hr>
+<div class="RecentReports">
+    <h1 class="Component-header"><i class="fa-solid fa-file-medical me-2 "></i>Recent Reports </h1><br><br>
+        <div class="tablecontainer2">
+        <table class="table2">
+          <thead class="thead-dark">
+            <tr>
+                <td scope="col"><b>Sr. No.</b></td>
+                <td scope="col"><b>First Name</b></td>
+                <td scope="col"><b>Last Name</b></td>
+                <td scope="col"><b>Phone No</b></td>
+                <td scope="col"><b>Email Id</b></td>
+                <td scope="col"><b>Refered By</b></td>
+                <td scope="col"><b>Reporting Date</b></td>
+                <td scope="col"><b>Reporting Time</b></td>
+                <td scope="col"><b>Action</b></td>
+                <td scope="col"><b>Action</b></td>
+              </tr>
+          </thead>
+          <tbody *ngFor="let item of recentReports; let i = index">
+            <tr>
+              <td>{{ i + 1 }}</td>
+              <td>{{item.firstName}}</td>
+              <td>{{item.lastName}}</td>
+              <td>{{item.phoneNumber}}</td>
+              <td>{{item.emailId}}</td>
+              <td>{{item.refBy}}</td>
+              <td>{{item.reportingDate}}</td>
+              <td>{{item.reportingTime}}</td>
+              <td><button class="print-inside-table"><i class="fa-solid fa-eye"></i> View</button>
+              <td><button class="print-inside-table"><i class="fa-solid fa-print"></i> Print</button>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="pagebar">
+            <select id="itemsPerPage" [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+                <option value="10">10</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+
+            <div class="offset">
+                <div class="previous" (click)="onClickLeft()">
+                <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="pagenumber">
+                    Page {{ currentPage }} out of 100
+                </div>
+                <div class="next" (click)="onClickRight()">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+</div>
