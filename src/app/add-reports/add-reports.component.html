@@ -105,7 +105,7 @@
                         <input type="text" [(ngModel)]="searchTerm" (input)="search()" class="form-control">
                         <ul *ngIf="showSuggestions && getFilteredSuggestions().length > 0" class="suggestion-list">
                           <li *ngFor="let suggestion of getFilteredSuggestions()" (click)="selectSuggestion(suggestion)">
-                            {{ suggestion.testname }}
+                            {{ suggestion.testName }}
                           </li>
                         </ul>
                     </div>
@@ -125,11 +125,11 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let item of selectedItems">
-                      <td>{{item.testname}}</td>
+                      <td>{{item.testName}}</td>
                       <td>{{item.price}}</td>
                       <td><input type="checkbox" [checked]="selectAllChecked"></td>
                       <td><a (click)="deleteItem(item)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-                      <td><button class="print-inside-table" (click)="addReport(item)"><i class="fa-solid fa-pen-nib"></i> Report</button></td>
+                      <td><button class="print-inside-table" (click)="addReport(item.testId)" [disabled]="isEnableOrDisable(item.testId)"><i class="fa-solid fa-pen-nib"></i> Report</button></td>
                     </tr>
                   </tbody>
                 </table>
@@ -142,7 +142,6 @@
               
               
               <div class="billingcard">
-                
                 <div class="leftcard">
                   <div class="lr1">
                       <label class="label-inline" for="Mode">Mode</label>
@@ -187,7 +186,7 @@
               </div>
 
               <div class="billingbutton">
-                <button class="reportbuttons">Save Report</button>
+                <!-- <button class="reportbuttons">Save Report</button> -->
                 <button class="reportbuttons">Update Report</button>
                 <button class="reportbuttons">Print Bill</button>
                 <button class="reportbuttons">Add New Hospital</button>
@@ -211,18 +210,35 @@
                 <td scope="col"><b>Action</b></td>
               </tr>
             </thead>
-            <tbody *ngFor="let reportcomponent of reportItems">
-              <tr *ngFor="let report of reportcomponent">
-                <td><input type="checkbox" [checked]="selectAllChecked"></td>
-                <td>{{report.component}}</td>
-                <td><input type="text" class="form-control2"></td>
-                <td>{{report.referenceRange}}</td>
-                <td>{{report.units}}</td>
-                <td><a (click)="deleteItem2(report)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
-              </tr>
+            <tbody *ngFor="let profile of reportComponentItems; let i = index">
+              <ng-container *ngIf="i === getviewComponentIndex()">
+                <tr *ngFor="let report of profile.profiles">
+                  <td><input type="checkbox" [checked]="selectAllChecked"></td>
+                  <td>{{ report.profileName }}</td>
+                  <td><input type="text" class="form-control2"></td>
+                  <td>{{ report.referenceRange }}</td>
+                  <td>{{ report.units }}</td>
+                  <td><a (click)="deleteItemByProfileId(report,profile.componentId)"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                </tr>
+              </ng-container>
             </tbody>
           </table>
         </div>
+        <ng-container *ngIf="IsMultipleComponents()">
+            <div class="viewpage">
+              <div class="offset">
+                <div class="previous" (click)="nextOrPrevious(1)">
+                <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="TotalReports">
+                   Report {{viewComponentIndex + 1}} out of {{ reportComponentItems.length }}
+                </div>
+                <div class="next" (click)="nextOrPrevious(2)">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+          </div>
+        </ng-container>
         <div class="horizontalline2"></div>
         <div class="container2">
           <div class="part1">
@@ -249,7 +265,7 @@
         </div>
 
         <div class="billingbutton2">
-          <button class="reportbuttons">Save & Next Report</button>
+          <button class="reportbuttons" (click)="onSaveAndNext()" [disabled]="isSaveEnableOrDisable()">{{buttonText}}</button>
           <button class="reportbuttons">Print Reports</button>
           <button class="reportbuttons" (click)="clearall()">Clear All</button>
         </div>

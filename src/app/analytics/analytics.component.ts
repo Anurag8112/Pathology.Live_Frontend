@@ -21,7 +21,7 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
   constructor(private samplecollected: AnalyticsDataService) {
     this.samplecollectedgraphData = {};
   }
-
+  
   ngOnInit() {
     this.samplecollected.sampleCollectedGraph(1).pipe(
       tap((data: any) => {
@@ -34,6 +34,34 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
       tap((data: any) => {
         this.expensesgraphData=data;
         this.expanceChart();
+      })
+    ).subscribe();
+
+    this.samplecollected.reportGeneratedGraph(1).pipe(
+      tap((data: any) => {
+        this.reportGeneratedLabels=data.labels;
+        this.reportGeneratedData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.totalRevenueGraph(1).pipe(
+      tap((data: any) => {
+        this.TotalRevenueLabels=data.labels;
+        this.TotalRevenueData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.netProfitGraph(1).pipe(
+      tap((data: any) => {
+        this.NetProfitLabels=data.labels;
+        this.NetProfitData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.testConductedGraph(1).pipe(
+      tap((data: any) => {
+        this.TestConductedLabels=data.labels;
+        this.TestConductedData=data.graphData;
       })
     ).subscribe();
   }
@@ -56,6 +84,34 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
         this.expanceChart();
       })
     ).subscribe();
+
+    this.samplecollected.reportGeneratedGraph(1).pipe(
+      tap((data: any) => {
+        this.reportGeneratedLabels=data.labels;
+        this.reportGeneratedData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.testConductedGraph(1).pipe(
+      tap((data: any) => {
+        this.TestConductedLabels=data.labels;
+        this.TestConductedData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.totalRevenueGraph(1).pipe(
+      tap((data: any) => {
+        this.TotalRevenueLabels=data.labels;
+        this.TotalRevenueData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.netProfitGraph(1).pipe(
+      tap((data: any) => {
+        this.NetProfitLabels=data.labels;
+        this.NetProfitData=data.graphData;
+      })
+    ).subscribe();
   }
 
   onClickThisWeek() {
@@ -76,6 +132,34 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
         this.expanceChart();
       })
     ).subscribe();
+
+    this.samplecollected.reportGeneratedGraph(2).pipe(
+      tap((data: any) => {
+        this.reportGeneratedLabels=data.labels;
+        this.reportGeneratedData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.testConductedGraph(2).pipe(
+      tap((data: any) => {
+        this.TestConductedLabels=data.labels;
+        this.TestConductedData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.totalRevenueGraph(2).pipe(
+      tap((data: any) => {
+        this.TotalRevenueLabels=data.labels;
+        this.TotalRevenueData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.netProfitGraph(2).pipe(
+      tap((data: any) => {
+        this.NetProfitLabels=data.labels;
+        this.NetProfitData=data.graphData;
+      })
+    ).subscribe();
   }
 
   onClickThisMonth() {
@@ -94,6 +178,34 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
       tap((data: any) => {
         this.expensesgraphData=data;
         this.expanceChart();
+      })
+    ).subscribe();
+
+    this.samplecollected.reportGeneratedGraph(3).pipe(
+      tap((data: any) => {
+        this.reportGeneratedLabels=data.labels;
+        this.reportGeneratedData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.testConductedGraph(3).pipe(
+      tap((data: any) => {
+        this.TestConductedLabels=data.labels;
+        this.TestConductedData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.totalRevenueGraph(3).pipe(
+      tap((data: any) => {
+        this.TotalRevenueLabels=data.labels;
+        this.TotalRevenueData=data.graphData;
+      })
+    ).subscribe();
+
+    this.samplecollected.netProfitGraph(3).pipe(
+      tap((data: any) => {
+        this.NetProfitLabels=data.labels;
+        this.NetProfitData=data.graphData;
       })
     ).subscribe();
   }
@@ -141,131 +253,47 @@ export class AnalyticsComponent implements OnInit, AfterViewInit {
       this.expensesChartInitialized = true;
     }
   }
-  
-  
+
 
   //Report Generated Chart
   public reportGeneratedOptions: ChartOptions = {
     responsive: false,
   };
-  public reportGeneratedLabels: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','q','d','g','g','f'];
+  public reportGeneratedLabels: string[] = [];
   public reportGeneratedType: ChartType = 'bar';
   public reportGeneratedLegend = true;
-  public reportGeneratedData: ChartDataset[] = [
-    {
-      data: [10, 20, 18, 12,20,25,18,25,30,27,22,35],
-      label: 'Sales',
-      backgroundColor: [
-        'rgba(81, 168, 255,0.8)',
-      ],
-      
-      borderWidth: 0
-    },
-    {
-      data: [23, 20, 53, 12,20,44,18,25,21,27,22,35],
-      label: 'Profit',
-      backgroundColor: [
-        'rgba(81, 23, 255,0.8)',
-        
-      ],
-      
-      borderWidth: 0
-    }
-  ];
+  public reportGeneratedData: ChartDataset[] = [];
 
   //Test Conducted Chart
   public TestConductedOptions: ChartOptions = {
     responsive: false,
   };
 
-  public TestConductedLabels: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  public TestConductedLabels: string[] = [];
   public TestConductedType: ChartType = 'bar';
   public TestConductedLegend = true;
-  public TestConductedData: ChartDataset[] = [
-    {
-      data: [10, 20, 18, 12,20,25,18],
-      label: 'Sales',
-      backgroundColor: [
-        'rgba(81, 168, 255,0.8)',
-      ],
-      
-      borderWidth: 0
-    },
-    {
-      data: [23, 20, 53, 12,20,44,18],
-      label: 'Profit',
-      backgroundColor: [
-        'rgba(81, 23, 255,0.8)',
-        
-      ],
-      
-      borderWidth: 0
-    }
-  ];
+  public TestConductedData: ChartDataset[] = [];
 
   // Total Revenue Chart
   public TotalRevenueOptions: ChartOptions = {
     responsive: false,
   };
 
-  public TotalRevenueLabels: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  public TotalRevenueLabels: string[] = [];
   public TotalRevenueType: ChartType = 'bar';
   public TotalRevenueLegend = true;
-  public TotalRevenueData: ChartDataset[] = [
-    {
-      data: [10, 20, 18, 12,20,25,18],
-      label: 'Sales',
-      backgroundColor: [
-        'rgba(81, 168, 255,0.8)',
-      ],
-      
-      borderWidth: 0
-    },
-    {
-      data: [23, 20, 53, 12,20,44,18],
-      label: 'Profit',
-      backgroundColor: [
-        'rgba(81, 23, 255,0.8)',
-        
-      ],
-      
-      borderWidth: 0
-    }
-  ];
+  public TotalRevenueData: ChartDataset[] = [];
 
   // Net  Profit Chart
   public NetProfitOptions: ChartOptions = {
     responsive: false,
   };
-
-  public NetProfitLabels: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  public NetProfitLabels: string[] = [];
   public NetProfitType: ChartType = 'bar';
   public NetProfitLegend = true;
-  public NetProfitData: ChartDataset[] = [
-    {
-      data: [10, 20, 18, 12,20,25,18],
-      label: 'Sales',
-      backgroundColor: [
-        'rgba(81, 168, 255,0.8)',
-      ],
-      
-      borderWidth: 0
-    },
-    {
-      data: [23, 20, 53, 12,20,44,18],
-      label: 'Profit',
-      backgroundColor: [
-        'rgba(81, 23, 255,0.8)',
-        
-      ],
-      
-      borderWidth: 0
-    }
-  ];
+  public NetProfitData: ChartDataset[] = [];
 
   ngAfterViewInit() {
-    
 
-    
   }
 }
