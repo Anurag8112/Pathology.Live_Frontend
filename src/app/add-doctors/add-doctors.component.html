@@ -1,1 +1,51 @@
-<p>add-doctors works!</p>
+<div class="maincard">
+    <div class="picturecontent">
+        <div class="profilephoto">
+            <img [src]="imageUrl" alt="" (error)="handleImageError()" #profileImage>
+            <i class="fa-solid fa-user-doctor icon-placeholder" *ngIf="!imageUrl"></i>
+        </div>        
+        <div class="profileeditbutton">
+            <div (click)="openImageUpload()" class="edit">
+                <i class="fa-solid fa-pen-to-square"></i> Edit Profile
+            </div>
+            <div class="saperator">
+                |
+            </div>
+            <div class="delete" (click)="openClearImage()">
+                <i class="fa-solid fa-trash"></i> Clear
+            </div>
+        </div>
+    </div>
+    <div class="mainform">
+        <div class="generalinfocard" [style.height]="generalInfoCardHeight" class="card">
+            <div class="heading">
+                <div>
+                    General Information
+                </div>
+                <div>
+                    <i class="fa-solid fa-caret-down" (click)="dropForm(1)"></i>
+                </div>
+            </div>
+            <div class="horizontalline"></div>
+            <div class="form"> 
+                kjdszhfb
+            </div>
+        </div>
+        <div class="qualificationcard" [style.height]="qualificationCardHeight" class="card">
+            <div class="heading">
+                <div>
+                    Qualification
+                </div>
+                <div>
+                    <i class="fa-solid fa-caret-down" (click)="dropForm(2)"></i>
+                </div>
+            </div>
+            <div class="horizontalline"></div>
+            <div class="form"> 
+                kjdszhfb
+            </div>
+        </div>
+    </div>
+</div>
+
+<input type="file" accept="image/*" #imageInput style="display: none" (change)="uploadImage($event)">
