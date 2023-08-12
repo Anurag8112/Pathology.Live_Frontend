@@ -1,124 +1,227 @@
-.maincard {
-    display: flex;
-    min-height: 600px;
-    margin: 10px;
-    margin-bottom: 20px;
-    background-color: white;
-    border: 0px;
-    border-radius: 0px;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
-}
+    .maincard {
+        display: flex;
+        min-height: 600px;
+        margin: 10px;
+        margin-bottom: 20px;
+        background-color: white;
+        border: 0px;
+        border-radius: 0px;
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
+    }
 
-.qualificationcard,
-.generalinfocard {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px;
-}
+    .card {
+        border: none;
+        padding: 16px;
+        max-height: auto;
+        width: 100%;
+        overflow: hidden;
+    }
+    
+    .card-header {
+        font-size: 18px;
+        justify-content: space-between;
+        display: flex;
+        margin-top: 15px;
+        border-bottom: 1px solid gray;
+        border-radius: 0;
+    }
 
-.card {
-    transition: height 0.8s ease; 
-    overflow: hidden;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: none;
-    border-radius: 0px;
-}
+    
+    .card-content {
+        transition: height 0.3s ease-in-out;
+        overflow: hidden;
+    }
+    
+    .expand-button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+    
 
+    .horizontalline{
+        border-bottom: 1px solid rgb(65, 65, 65);
+        margin-top: 10px;
+        margin-right: 15px;
+    }
 
-.horizontalline{
-    border-bottom: 1px solid rgb(65, 65, 65);
-    margin-top: 10px;
-    margin-right: 15px;
-  }
-
-.heading{
-    justify-content: space-between;
-    display: flex;
-    font-size: large;
-    font-weight: 500;
-    color: #707070;
-}
-
-.heading > div:last-child {
-    margin-right: 20px;
-}
-
-
-.picturecontent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 25%;
-    padding: 10px;
-    background-color: #C7DFFF;
-}
-
-.profilephoto {
-    width: 150px; 
-    height: 150px;
-    margin: 10px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 3px solid #41a0ff;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
-    position: relative; 
-}
-
-.profilephoto img ,
-.icon-placeholder {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    font-size: 100px;
-    background-color: #51A8FF;
-    color: #C7DFFF;
-    display: none;
-    width: calc(100% - 8px);
-    height: calc(100% - 8px); 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.profilephoto img {
-    object-fit: cover;
-}
-
-.profilephoto img.onerror + .icon-placeholder {
-    display: block;
-}
+    .heading > div:last-child {
+        margin-right: 20px;
+    }
 
 
-.profileeditbutton {
-    margin: 5px 0px 5px 0px;
-    border-radius: 5px;
-    display: flex;
-    gap: 10px;
-}
+    .picturecontent {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 25%;
+        padding: 10px;
+        background-color: #C7DFFF;
+    }
 
-.delete,
-.edit{
+    .profilephoto {
+        width: 150px; 
+        height: 150px;
+        margin: 10px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 3px solid #41a0ff;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        position: relative; 
+    }
+
+    .profilephoto img ,
+    .icon-placeholder {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        font-size: 100px;
+        background-color: #51A8FF;
+        color: #C7DFFF;
+        display: none;
+        width: calc(100% - 8px);
+        height: calc(100% - 8px); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profilephoto img {
+        object-fit: cover;
+    }
+
+    .profilephoto img.onerror + .icon-placeholder {
+        display: block;
+    }
+
+
+    .profileeditbutton {
+        margin: 5px 0px 5px 0px;
+        border-radius: 5px;
+        display: flex;
+        gap: 10px;
+    }
+
+    .delete,
+    .edit{
+        cursor: pointer;
+        color: #707070; /* Initial text color */
+        transition: color 0.3s; /* Add smooth transition effect */
+    }
+
+
+    .saperator{
+        color: #707070;
+    }
+
+    .delete:hover,
+    .edit:hover {
+        color: #4B98FF; /* Color to change to on hover */
+    }
+
+
+
+    .mainform {
+        width: 80%;
+        height: auto;
+        padding: 20px 10px;
+    }
+
+    .doctorform {
+        display: flex;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .generalinfo-left,
+    .generalinfo-right{ 
+        width: 100%;
+    }
+
+    .generalinfo-left div,
+    .generalinfo-right div {
+        display: flex;
+        align-items: center;
+        gap: 10px; 
+        padding: 10px;
+    }
+
+    .generalinfo-left div label:first-child,
+    .generalinfo-right div label:first-child {
+        width: 80px; 
+    }
+    
+    
+
+    .dropdown label{
+        width: 30px;
+    }
+    
+    label {
+        font-weight: bold;
+        display: inline-block;
+        text-align: left;
+    }
+    
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    /* select, */
+    textarea{
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    select{
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+        width: 80px;
+    }
+
+    .submitbutton,
+    .cancelbutton {
+    border-radius: 25px;
+    padding: 8px 5px;
+    font-size: 14px;
     cursor: pointer;
-    color: #707070; /* Initial text color */
-    transition: color 0.3s; /* Add smooth transition effect */
-}
+    border: none;
+    width: 100px;
+    }
 
-.saperator{
-    color: #707070;
-}
+    .submitbutton:hover,.cancelbutton:hover{
+        background-color: #007bff;
+        color: white;
+        transition: 0.2s ease-in-out;
+    }
 
-.delete:hover,
-.edit:hover {
-    color: #4B98FF; /* Color to change to on hover */
-}
+    .submitbutton:active,
+    .cancelbutton:active{
+    background-color: #3195ff;
+    transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+    }
 
+    .cancelbutton,.submitbutton {
+        background-color: #ccc;
+        color: black;
+        transition: 0.2s ease-in-out;
+    }
 
+    .formbuttons {
+        display: flex;
+        gap: 10px;
+        padding: 15px;
+        padding-left: 0px;
+    }
 
-.mainform {
-    width: 80%;
-    height: auto;
-    padding: 20px 10px;
-}
+    
+    

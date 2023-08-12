@@ -34,14 +34,18 @@ export class AddDoctorsComponent {
       }
     }
   
-    qualificationCardHeight: string = 'auto';
-    generalInfoCardHeight: string = 'auto';
+    cardHeight: number = 180;
+    isExpanded: boolean = true;
+    cardHeight2: number = 130;
+    isExpanded2: boolean = true;
 
-    dropForm(formid: number) {
-        if (formid === 2) {
-        this.qualificationCardHeight = this.qualificationCardHeight === '300px' ? 'auto' : '300px';
-        } else if (formid === 1) {
-        this.generalInfoCardHeight = this.generalInfoCardHeight === '300px' ? 'auto' : '300px';
+    toggleCard(id:number) {
+        if(id==1){
+            this.isExpanded = !this.isExpanded;
+            this.cardHeight = this.isExpanded ? 180 : 0;
+        }else{
+            this.isExpanded2 = !this.isExpanded2;
+            this.cardHeight2 = this.isExpanded2 ? 130 : 0;
         }
     }
 
