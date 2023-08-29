@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class DoctorComponent {
 
+  activeTab: string = 'Add-Doctor';
+
+  onClickDoctorList() {
+    this.activeTab = 'Doctor-List';
+  }
+  onClickaddDoctor() {
+    this.activeTab = 'Add-Doctor';
+  }
 }
