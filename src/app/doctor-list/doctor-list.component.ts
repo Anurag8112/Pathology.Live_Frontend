@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DashboardDataService } from '../services/dashboard-data.service';
 
 @Component({
   selector: 'app-doctor-list',
@@ -6,66 +7,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./doctor-list.component.css']
 })
 export class DoctorListComponent {
-  list=[
-    {
-      srno : '1',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '2',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '3',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '4',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '5',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '6',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '7',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '8',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '9',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-    {
-      srno : '10',
-      first: 'anurag',
-      last:'katiyar',
-      handle:'anurag8112'
-    },
-  ]
+  recentReports :any;
+  constructor(private dashboard:DashboardDataService)
+  {
+    dashboard.recentReports(10,1).subscribe((reports)=>{
+      this.recentReports=reports
+      console.warn(this.recentReports);
+    });
+  }
+
+  selectedItemsPerPage: number = 10; 
+  currentPage: number = 1;
+  totalItems: number = 100;
+
+  recentReportsData() {
+    this.dashboard.recentReports(this.selectedItemsPerPage,this.currentPage).subscribe((reports) => {
+      this.recentReports = reports;
+      console.warn(this.recentReports);
+    });
+  }
+
+  onClickLeft() {
+    if(this.currentPage!=1){
+      this.currentPage--;
+      this.recentReportsData();
+    }
+  }
+
+  onClickRight() {
+      this.currentPage++;
+      this.recentReportsData();
+  }
+  onItemsPerPageChange() {
+    this.recentReportsData(); // Call the recentReportsData() function with the selected value
+  }
 }

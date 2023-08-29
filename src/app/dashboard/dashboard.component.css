@@ -62,7 +62,7 @@
     border-bottom: 3px solid transparent;
   }
   
-.topnav a:hover {
+  .topnav a:hover {
     cursor: pointer;
     border-bottom: 3px solid DodgerBlue;
     padding-bottom: 15px;

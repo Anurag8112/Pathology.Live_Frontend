@@ -64,7 +64,7 @@
     padding-bottom: 15px;
   }
   
-  .topnav a.active {
+.topnav a.active {
     border-bottom: 3px solid DodgerBlue;
     padding-bottom: 15px;
-  }
+}

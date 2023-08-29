@@ -1,5 +1,4 @@
 .card{
-    margin-top: 300px;
     min-width: 200px;
     min-height: auto;
     width: auto;
@@ -26,6 +25,12 @@
 
 .btn{
     background-color: DodgerBlue;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.btn:hover{
+    background-color: rgb(0, 128, 255);
     width: 100%;
     margin-bottom: 10px;
 }

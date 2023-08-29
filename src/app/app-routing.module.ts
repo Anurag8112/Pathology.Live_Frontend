@@ -19,7 +19,7 @@ import { PhlebotomistListComponent } from './phlebotomist-list/phlebotomist-list
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  {path:'', redirectTo:'dashboard', pathMatch:'full'},
+  { path: '', component: LoginComponent },
   {path:'dashboard', component:DashboardComponent},
   {path: 'analytics', component: AnalyticsComponent},
   {path: 'reports', component: ReportsComponent,children:[
@@ -79,7 +79,6 @@ const routes: Routes = [
   ]},
   {path:'lab-technician', component: LabTechnicianComponent},
   {path: 'finance', component: FinanceComponent},
-  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({

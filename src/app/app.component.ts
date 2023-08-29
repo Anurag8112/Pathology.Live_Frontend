@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,9 +10,7 @@ import {Router} from '@angular/router';
 export class AppComponent {
   title = 'Pathology';
   sideNavStatus:boolean =true;
-  isLoggedIn: boolean = false;
-
-  constructor(private router:Router){}
-  ngOnInit(): void{}
-  
+  loginstatus:boolean=true;
+  constructor(private router: Router) {}
+  ngOnInit(): void {}
 }

@@ -26,6 +26,15 @@
         border-radius: 0;
     }
 
+    .rotate-icon {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .rotate-icon2 {
+        transform: rotate(180deg);
+        transition: transform 0.3s ease;
+    }
     
     .card-content {
         transition: height 0.3s ease-in-out;
@@ -155,8 +164,6 @@
         width: 80px; 
     }
     
-    
-
     .dropdown label{
         width: 30px;
     }
@@ -185,9 +192,15 @@
         border: 1px solid #ccc;
         border-radius: 5px;
         font-size: 14px;
-        width: 80px;
+        width: auto;
     }
 
+    /* Style for the disabled Save button */
+    .submitbutton[disabled] {
+        background-color: #ccc; /* Change this to your desired color */
+        cursor: not-allowed;
+    }
+    
     .submitbutton,
     .cancelbutton {
     border-radius: 25px;

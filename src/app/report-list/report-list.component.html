@@ -1,48 +1,55 @@
-<div class="ReportCard">
-    <div class="card">
-        <div class="cardcontent">
-            <table class="table">
-                <thead class="thead-dark">
-                  <tr>
-                    <td scope="col"><b>Sr. No.</b></td>
-                    <td scope="col"><b>First Name</b></td>
-                    <td scope="col"><b>Last Name</b></td>
-                    <td scope="col"><b>Handle</b></td>
-                    <td scope="col"><b>Action</b></td>
-                  </tr>
-                </thead>
-                <tbody *ngFor="let item of list">
-                  <tr>
-                    <td>{{item.srno}}</td>
-                    <td>{{item.first}}</td>
-                    <td>{{item.last}}</td>
-                    <td>{{item.handle}}</td>
-                    <td><a href="#"><i class="fa fa-print me-1"></i>Print</a>
-                    </td>
-                  </tr>
-                </tbody>
-              </table> 
-              <div class="pagebar">
-                <nav aria-label="Page navigation example">
-                  <ul class="pagination">
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only"></span>
-                      </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only"></span>
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
+<div class="RecentReports">
+  <h1 class="Component-header"><i class="fa-solid fa-file-medical me-2"></i>Report List</h1>
+      <div class="tablecontainer2">
+      <table class="table2">
+        <thead class="thead-dark">
+          <tr>
+              <td scope="col"><b>Sr. No.</b></td>
+              <td scope="col"><b>First Name</b></td>
+              <td scope="col"><b>Last Name</b></td>
+              <td scope="col"><b>Phone No</b></td>
+              <td scope="col"><b>Email Id</b></td>
+              <td scope="col"><b>Refered By</b></td>
+              <td scope="col"><b>Reporting Date</b></td>
+              <td scope="col"><b>Reporting Time</b></td>
+              <td scope="col"><b>Action</b></td>
+              <td scope="col"><b>Action</b></td>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of recentReports; let i = index">
+          <tr>
+            <td>{{ i + 1 }}</td>
+            <td>{{item.firstName}}</td>
+            <td>{{item.lastName}}</td>
+            <td>{{item.phoneNumber}}</td>
+            <td>{{item.emailId}}</td>
+            <td>{{item.refBy}}</td>
+            <td>{{item.reportingDate}}</td>
+            <td>{{item.reportingTime}}</td>
+            <td><button class="print-inside-table"><i class="fa-solid fa-eye"></i> View</button>
+            <td><button class="print-inside-table"><i class="fa-solid fa-print"></i> Print</button>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="pagebar">
+          <select id="itemsPerPage" [(ngModel)]="selectedItemsPerPage" (change)="onItemsPerPageChange()">
+              <option value="10">10</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+          </select>
+
+          <div class="offset">
+              <div class="previous" (click)="onClickLeft()">
+              <i class="fa-solid fa-chevron-left"></i>
               </div>
-        </div>
-    </div>
+              <div class="pagenumber">
+                  Page {{ currentPage }} out of 100
+              </div>
+              <div class="next" (click)="onClickRight()">
+                  <i class="fa-solid fa-chevron-right"></i>
+              </div>
+          </div>
+      </div>
 </div>

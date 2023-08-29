@@ -71,4 +71,9 @@ app-sidebar{
     width: calc(100% - 230px);
 }
 
+.loginpage{
+    background-color: #0caeff;
+}
+
+
 
